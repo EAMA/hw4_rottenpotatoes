@@ -4,6 +4,6 @@ class Movie < ActiveRecord::Base
   end
   
   def self.find_movies_by_director(director)
-    find_same_by_director(director)
+    find_all_by_director(director)
   end
 end
