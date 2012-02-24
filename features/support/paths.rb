@@ -16,7 +16,24 @@ module NavigationHelpers
     when /^the home\s?page$/
       '/'
 
-    # Add more mappings here.
+    when /^the RottenPotatoes home page$/
+      '/movies'
+      
+    when /^the edit page for "(.*)"$/
+      mov = Movie.find(:first, :conditions => ["title = ?", $1])
+      id = mov.id
+      "/movies/#{id}/edit"
+      
+    when /^the details page for "([^"]+)"$/
+      mov = Movie.find(:first, :conditions => ["title = ?", $1])
+      id = mov.id
+      "/movies/#{id}"
+    
+    when /^the Similar Movies page for "([^"]+)"$/
+      mov = Movie.find(:first, :conditions => ["title = ?", $1])
+      id = mov.id
+      "/movies/#{id}/findmovieswithsamedirector"
+    # Add more mappings here.e
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
